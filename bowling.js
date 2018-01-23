@@ -5,15 +5,17 @@ function getScore(arr){
     let previous;
     let frameSums = [];
     let i;
-    frameDone = false;
-    frameCount = 0;
+    let frameDone = false;
+    let frameCount = 0;
     frameSums[0] = 0;
     frame = 0;
+    let previousisStrike;
     for(i = 0; i < arr.length; i++){
         if(arr[i]===10){
             console.log(arr[i])
             frameSums[frame] += arr[i];
             frameDone = true;
+            isStrike = true
         }
         if(!frameDone){
             console.log(arr[i]);
@@ -22,6 +24,7 @@ function getScore(arr){
         }
 
         if(frameDone || (frameCount === 2)){
+            if (isStrike)
             console.log("Frame",frame)
             frame+=1;
             frameCount = 0;
@@ -72,9 +75,6 @@ function getScore(arr){
     for(i=0;i<frameSums.length;i++){
         score += frameSums[i]
     }
-
-    
-
     return score;
 }
 
